@@ -1,0 +1,11 @@
+.portfolio-container {
+  position: relative;
+  overflow-x: hidden;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
