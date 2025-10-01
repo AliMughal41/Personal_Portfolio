@@ -1,11 +1,137 @@
-.portfolio-container {
-  position: relative;
-  overflow-x: hidden;
-  background: #fff;
-  font-family: Arial, sans-serif;
+/* Import Modern Fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Global Portfolio Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-section {
-  position: relative;
-  z-index: 1;
+body {
+    /* Using Inter as primary font with Poppins as fallback */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-weight: 400;
+
+    width: 100%;
+}
+
+/* Headings with Poppins for more impact */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+/* Hero Section Large Text */
+.hero h1,
+.hero .name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* Subtitle/Role Text */
+.hero .role,
+.hero h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+/* Body/Paragraph Text */
+p, .description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Navigation */
+nav, nav a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Buttons */
+button, .btn, .download-cv {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.portfolio-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #0a0a0a;
+}
+
+/* Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc6a;
+}
+
+/* Selection Color */
+::selection {
+    background: #00ff88;
+    color: #0a0a0a;
+}
+
+::-moz-selection {
+    background: #00ff88;
+    color: #0a0a0a;
+}
+
+/* Improved Text Rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Print styles */
+@media print {
+    .loader,
+    .particles,
+    nav,
+    .floating-elements,
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .section {
+        padding: 40px 20px !important;
+        page-break-inside: avoid;
+    }
+    
+    .hero,
+    .section {
+        background: white !important;
+    }
 }

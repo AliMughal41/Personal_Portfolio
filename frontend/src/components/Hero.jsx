@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Hero.css";
 
 const Hero = () => {
+  const [downloading, setDownloading] = useState(false);
+
   const socialLinks = [
     {
       icon: "fab fa-linkedin-in",
@@ -30,14 +32,53 @@ const Hero = () => {
     },
   ];
 
-  const handleDownloadCV = () => {
-    // Create a link element and trigger download
-    const link = document.createElement("a");
-    link.href = "/cv/Muhammad_Ali_CV.pdf"; // Ensure CV is placed in the public/cv folder
-    link.download = "Muhammad_Ali_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownloadCV = async () => {
+    try {
+      setDownloading(true);
+
+      // Method 1: Simple window.open (Recommended - Works with IDM)
+      window.open("http://localhost:4000/api/v1/cv/download", "_blank");
+
+      setDownloading(false);
+    } catch (error) {
+      console.error("Download error:", error);
+      alert("Failed to download CV. Please try again.");
+      setDownloading(false);
+    }
+  };
+
+  // Alternative method using fetch (if simple method doesn't work)
+  const handleDownloadCVWithFetch = async () => {
+    try {
+      setDownloading(true);
+
+      const response = await fetch("http://localhost:4000/api/v1/cv/download");
+
+      if (!response.ok) {
+        throw new Error("Download failed");
+      }
+
+      // Get the blob from response
+      const blob = await response.blob();
+
+      // Create a download link
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Muhammad_Ali_CV.pdf";
+      document.body.appendChild(link);
+      link.click();
+
+      // Cleanup
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      setDownloading(false);
+    } catch (error) {
+      console.error("Download error:", error);
+      alert("Failed to download CV. Please try again.");
+      setDownloading(false);
+    }
   };
 
   return (
@@ -56,8 +97,12 @@ const Hero = () => {
 
           <div className="hero-buttons">
             {/* Download CV Button */}
-            <button onClick={handleDownloadCV} className="btn-primary">
-              Download CV
+            <button
+              onClick={handleDownloadCV}
+              className="btn-primary"
+              disabled={downloading}
+            >
+              {downloading ? "Downloading..." : "Download CV"}
             </button>
 
             {/* Social Icons */}
@@ -82,7 +127,7 @@ const Hero = () => {
           <div className="profile-container">
             <div className="profile-ring"></div>
             <img
-              src="/image3.jpg"
+              src="/image3.png"
               alt="Muhammad Ali"
               className="profile-img"
             />

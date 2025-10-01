@@ -1,0 +1,44 @@
+/* Add this to your main index.css or App.css */
+
+/* Import Modern Fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+html, body, #root {
+    background-color: #0a0a0a !important;
+    min-height: 100vh;
+       
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    
+}
+/* Full width container */
+.portfolio-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+/* Sections - Full width */
+.section,
+.hero,
+.about,
+.skills,
+.services,
+.projects,
+.education,
+.contact,
+.why-hire {
+    width: 93%;
+    margin: 0;
+    padding: 80px 0; /* Only top and bottom padding, no side padding */
+    max-width: 100%;
+    margin-left: 30px;
+    
+}
