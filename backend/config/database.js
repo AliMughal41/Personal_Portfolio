@@ -1,3 +1,4 @@
+// config/database.js
 import mongoose from "mongoose";
 
 export const connectDatabase = () => {
@@ -10,5 +11,6 @@ export const connectDatabase = () => {
     })
     .catch((error) => {
       console.error("Database connection error:", error);
+      process.exit(1);
     });
 };
